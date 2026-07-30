@@ -1,0 +1,8 @@
+Coloca aquí tu vídeo de demostración (por ejemplo, demo.mp4) cuando lo
+tengas. Formato recomendado: MP4 (códec H.264), para máxima compatibilidad
+con navegadores. Procura que no pese demasiado (unas decenas de MB, no
+cientos) para que la web cargue rápido — si el vídeo es largo, es mejor
+subirlo a YouTube y usar el enlace, en vez de alojar el archivo aquí.
+
+Ver el README.md de la raíz del proyecto para las instrucciones exactas
+de cómo conectarlo a la página.

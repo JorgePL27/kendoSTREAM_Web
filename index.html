@@ -21,8 +21,11 @@
         <li><a href="#caracteristicas">Características</a></li>
         <li><a href="#instalacion">Instalación</a></li>
         <li><a href="#documentacion">Documentación</a></li>
-        <li><a href="#novedades">Novedades</a></li>
+        <li><a href="novedades.html">Novedades</a></li>
+        <li><a href="tutoriales.html">Tutoriales</a></li>
+        <!-- <li><a href="eventos.html">Eventos</a></li> -->
       </ul>
+
       <a href="descargas/kendostream.zip" download class="boton boton-primario">Descargar</a>
     </div>
   </nav>
@@ -37,7 +40,7 @@
         y gratuito.
       </p>
       <div class="hero-acciones">
-       <a href="descargas/kendostream.zip" download class="boton boton-primario">Descargar KendoSTREAM</a>
+        <a href="#instalacion" class="boton boton-primario">Descargar KendoSTREAM</a>
         <a href="#documentacion" class="boton boton-secundario">Ver documentación</a>
       </div>
     </div>
@@ -196,10 +199,6 @@
           frameborder="0"
           allowfullscreen>
         </iframe>
-        <!-- <div class="demo-placeholder">
-          <strong>Vídeo de demostración próximamente</strong>
-          Aquí irá un combate retransmitido con KendoSTREAM en directo.
-        </div> -->
       </div>
     </div>
   </section>
@@ -235,10 +234,10 @@
         <div class="terminal">
           <div class="terminal-barra"><span></span><span></span><span></span></div>
           <pre><span class="cmd">cd kendostream</span>
-<span class="cmd">npm install</span>
-<span class="out">añadiendo dependencias…</span>
-<span class="cmd">npm start</span>
-<span class="out">KendoSTREAM escuchando en http://localhost:3000</span></pre>
+          <span class="cmd">npm install</span>
+          <span class="out">añadiendo dependencias…</span>
+          <span class="cmd">npm start</span>
+          <span class="out">KendoSTREAM escuchando en http://localhost:3000</span></pre>
         </div>
       </div>
       <p style="margin-top:36px; color:var(--acero); font-size:0.9rem;">
@@ -256,11 +255,11 @@
         <h2>Todo lo que hace falta para ponerlo en marcha</h2>
       </div>
       <div class="docs-grid">
-        <a href="#" class="doc-card">
-          <h3>Manual de instalación</h3>
-          <p>Paso a paso para Windows y Mac, configuración de OBS, y solución de problemas habituales.</p>
-          <span class="flecha">Próximamente  →</span>
-        </a>
+      <a href="descargas/manual-kendostream.docx" download class="doc-card">
+        <h3>Manual de instalación</h3>
+        <p>Paso a paso para Windows y Mac, configuración de OBS, y solución de problemas habituales.</p>
+        <span class="flecha">Descargar manual →</span>
+      </a>
         <a href="#" class="doc-card">
           <h3>Vídeos tutoriales</h3>
           <p>Instalación, primer combate, y configuración del modo Campeonato Importante, explicados paso a paso.</p>
@@ -271,68 +270,6 @@
           <p>Código fuente, historial de versiones, y el lugar para reportar cualquier problema que encuentres.</p>
           <span class="flecha">Próximamente  →</span>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="novedades">
-    <div class="envoltura">
-      <div class="seccion-cabecera">
-        <p class="seccion-eyebrow">Novedades</p>
-        <h2>Qué ha cambiado últimamente</h2>
-      </div>
-      <div class="changelog-lista">
-        <div class="changelog-item">
-          <div class="version">v2.0</div>
-          <ul>
-            <li>Nueva sección `/organizador`, enlazada desde el panel junto a Configuración.</li>
-            <li>Manual actualizado: eliminada la sección del instalador de doble clic, simplificados los apartados de solución de problemas relacionados.</li>
-            <li>Eliminatoria directa: Formato estándar en serpentina, byes priorizados a cabezas de serie (máximo 2), evita coincidencias de club en la 1ª ronda.</li>
-            <li>Fase de grupos + Eliminatoria: Tamaño de grupo calculado automáticamente (2-4 competidores, lo más parecido a 4 posible); nº de clasificados por grupo configurable por el organizador; reparto en grupos evitando coincidencias de club y separando cabezas de serie.</li>
-            <li>Cruce entre grupos por siembra en serpentina (1º del primer grupo contra 2º del último, etc.), verificado matemáticamente para garantizar que dos clasificados del mismo grupo original solo puedan volver a encontrarse en la Final — funciona para cualquier número de grupos, no solo potencias de 2.</li>
-            <li>Clasificación en vivo por grupo (victorias, luego ippones), con detección automática de empates en el corte de clasificación y resolución mediante combate de desempate.</li>
-            <li>Botón único **"Generar Torneo"**: según el formato elegido, genera y descarga automáticamente el PDF correspondiente — el cuadro completo en eliminatoria directa, o los grupos (solo competidores) + el cruce con huecos tipo "1º Grupo A" / "2º Grupo D" en formato grupos.</li>
-            <li>PDF a **doble ala** automático para cuadros de más de 32 plazas (dos mitades del cuadro convergiendo hacia el centro), pensado para que se pueda imprimir y leer bien en cuadros grandes.</li>
-            <li>Los byes ya no se muestran como combate: el competidor con bye aparece directo en la ronda donde juega de verdad.</li>
-            <li>Guardado automático en el propio servidor (`data/torneo.json`).</li>
-          </ul>
-        </div>
-        <div class="changelog-item">
-          <div class="version">v1.3.1</div>
-          <ul>
-            <li>Retirado instalar.bat (el instalador de doble clic para Windows) — quedaba desaconsejado en la práctica por los bloqueos de Smart App Control, y mantenerlo generaba confusión sin aportar una vía fiable. El método de comandos de terminal (apartado 3.1 del manual) es ahora la única vía documentada para Windows.</li>
-            <li>Manual actualizado: eliminada la sección del instalador de doble clic, simplificados los apartados de solución de problemas relacionados.</li>
-          </ul>
-        </div>
-        <div class="changelog-item">
-          <div class="version">v1.3</div>
-          <ul>
-            <li>Nuevos diseños de overlay, "Neón" y "Samurai".</li>
-            <li>Medidas del overlay actualizadas en Clásico y KendoSTREAM (fotos, logos, tipografía y elementos en general, más grandes).</li>
-          </ul>
-        </div>
-        <div class="changelog-item">
-          <div class="version">v1.2</div>
-          <ul>
-            <li>Diseño "Modo Campeonato": categoría, modalidad, fotos de competidores y logos de club.</li>
-            <li>Límite de 2 puntos por combate y marca de hansoku simplificada.</li>
-            <li>Paquete de idiomas del panel (español / inglés).</li>
-          </ul>
-        </div>
-        <div class="changelog-item">
-          <div class="version">v1.1</div>
-          <ul>
-            <li>Identidad de marca y segundo diseño de overlay, "KendoSTREAM".</li>
-            <li>Tabla de equipos, indicador de Encho/Prórroga.</li>
-            <li>Instalación en Windows por comandos de terminal, más fiable frente a antivirus.</li>
-          </ul>
-        </div>
-        <div class="changelog-item">
-          <div class="version">v1.0</div>
-          <ul>
-            <li>Primera versión: marcador, overlay, modo equipos, integración con OBS.</li>
-          </ul>
-        </div>
       </div>
     </div>
   </section>

@@ -5,34 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KendoSTREAM — Marcador y overlay gratuito para retransmisiones de kendo</title>
   <meta name="description" content="KendoSTREAM es un marcador y overlay gratuito para retransmisiones de kendo en directo, pensado para clubes y organizadores. Compatible con OBS Studio." />
+  <meta property="og:title" content="KendoSTREAM — Marcador y overlay gratuito para retransmisiones de kendo" />
+  <meta property="og:description" content="KendoSTREAM es un marcador y overlay gratuito para retransmisiones de kendo en directo, pensado para clubes y organizadores. Compatible con OBS Studio." />
+  <meta property="og:image" content="https://kendostream.com/assets/img/hero-kendostream.jpg" />
+  <meta property="og:type" content="website" />
   <link rel="icon" href="assets/img/logo.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="envoltura">
-      <div class="nav-marca">
-        <img src="assets/img/logo.png" alt="KendoSTREAM" />
-        KENDO<span style="color:var(--carmesi)">STREAM</span>
-      </div>
-      <ul class="nav-enlaces">
-        <li><a href="#que-es">Qué es</a></li>
-        <li><a href="#caracteristicas">Características</a></li>
-        <li><a href="#instalacion">Instalación</a></li>
-        <li><a href="#documentacion">Documentación</a></li>
-        <li><a href="news.html">Novedades</a></li>
-        <li><a href="tutorials.html">Tutoriales</a></li>
-        <!-- <li><a href="events.html">Eventos</a></li> -->
-      </ul>
-
-      <a href="#instalacion" download class="boton boton-primario">Descargar</a>
-    </div>
-  </nav>
+  <div id="ks-cabecera"></div>
 
   <header class="hero">
     <div class="hero-contenido">
-      <p class="hero-eyebrow">Software libre para clubes de kendo</p>
+      <p class="hero-eyebrow">Gratuito para clubes y organizadores de kendo</p>
       <h1>El marcador que le faltaba<br />a tu <span>retransmisión</span></h1>
       <p class="lead">
         Panel de control y overlay en tiempo real para OBS Studio. Puntos, hansoku,
@@ -40,8 +26,8 @@
         y gratuito.
       </p>
       <div class="hero-acciones">
-        <a href="#instalacion" download class="boton boton-primario">Descargar KendoSTREAM</a>
-        <a href="#documentacion" class="boton boton-secundario">Ver documentación</a>
+        <a href="descargas/kendostream.zip" download class="boton boton-primario">Descargar KendoSTREAM <span data-ks-version></span></a>
+        <a href="instalacion.html" class="boton boton-secundario">Cómo instalarlo</a>
       </div>
     </div>
     <div class="hero-captura">
@@ -50,6 +36,21 @@
   </header>
 
   <hr class="franja-divisoria" />
+
+  <!-- Cuenta atrás: se rellena sola desde datos/eventos.js y se oculta si no hay evento próximo -->
+  <section id="cuenta-atras" class="evento-seccion" hidden></section>
+
+  <!-- Destacados: noticias con portada:true en datos/noticias.js -->
+  <section id="destacados" class="destacados" hidden>
+    <div class="envoltura">
+      <div class="seccion-cabecera" style="margin-bottom:28px;">
+        <p class="seccion-eyebrow">Última hora</p>
+        <h2>Novedades y noticias</h2>
+      </div>
+      <div class="tarjetas" id="destacadosLista"></div>
+      <p style="margin-top:20px;"><a class="enlace-rojo" href="noticias.html">Todas las noticias y eventos →</a></p>
+    </div>
+  </section>
 
   <section id="que-es">
     <div class="envoltura que-es">
@@ -71,9 +72,8 @@
           depender de internet durante la retransmisión.
         </p>
         <p>
-          Es gratuito, de código abierto para uso no comercial, y pensado desde el
-          primer día para que cualquier club pueda instalarlo sin conocimientos
-          técnicos avanzados.
+          Es gratuito para uso no comercial y pensado desde el primer día para que
+          cualquier club pueda instalarlo sin conocimientos técnicos avanzados.
         </p>
       </div>
       <div class="que-es-imagen">
@@ -93,12 +93,27 @@
         <div class="caracteristica">
           <p class="marca-num">Men · Kote · Do · Tsuki</p>
           <h3>Marcador en tiempo real</h3>
-          <p>Puntos por técnica, hansoku con ippon automático al segundo hansoku, y combate que se cierra solo al llegar a 2 puntos.</p>
+          <p>Puntos por técnica, hansoku (el segundo da punto al rival), encho y deshacer el último punto si los árbitros lo anulan.</p>
         </div>
         <div class="caracteristica">
-          <p class="marca-num">Shiro · Aka</p>
-          <h3>Modo equipos</h3>
-          <p>Victorias, empates e ippones por equipo, mostrados en una tabla clara dentro del propio overlay.</p>
+          <p class="marca-num">Puntos · Hantei · Técnica</p>
+          <h3>Resultado del combate</h3>
+          <p>Al finalizar, el overlay muestra quién gana y cómo: por puntos, encho, hantei, empate o victoria técnica.</p>
+        </div>
+        <div class="caracteristica">
+          <p class="marca-num">3 · 5 integrantes</p>
+          <h3>Encuentros por equipos</h3>
+          <p>Victorias, empates e ippones se suman solos, con combate de desempate en eliminatoria y tabla clara dentro del overlay.</p>
+        </div>
+        <div class="caracteristica">
+          <p class="marca-num">Cuadros · Grupos</p>
+          <h3>Organizador de torneos</h3>
+          <p>Eliminatoria directa o grupos + eliminatoria, con siembra, clasificación en vivo y cuadro en PDF listo para imprimir.</p>
+        </div>
+        <div class="caracteristica">
+          <p class="marca-num">JSON por evento</p>
+          <h3>Registro de resultados</h3>
+          <p>Cada combate finalizado se guarda en un archivo por evento, con copia de respaldo, para conservar el histórico de tu torneo.</p>
         </div>
         <div class="caracteristica">
           <p class="marca-num">Browser Source</p>
@@ -113,42 +128,61 @@
         <div class="caracteristica">
           <p class="marca-num">ES · EN</p>
           <h3>Panel en dos idiomas</h3>
-          <p>Interfaz del operador en español o inglés. El overlay lo escribe el propio operador, en el idioma que quiera.</p>
+          <p>Interfaz del operador y mensajes del overlay en español o inglés.</p>
         </div>
         <div class="caracteristica">
           <p class="marca-num">100% local</p>
-          <h3>Sin conexión, sin nube</h3>
+          <h3>Sin nube, sin depender de internet</h3>
           <p>Todo corre en la red del pabellón. Nada de tu combate pasa por servidores de terceros.</p>
         </div>
         <div class="caracteristica">
-          <p class="marca-num">Móbil · Tablet</p>
-          <h3>Panel de Control Remoto</h3>
-          <p>Utiliza tu móbil o tablet para manejar el marcador a distancia</p>
+          <p class="marca-num">Móvil · Tablet</p>
+          <h3>Panel de control remoto</h3>
+          <p>Utiliza tu móvil o tablet para manejar el marcador a distancia.</p>
         </div>
         <div class="caracteristica">
           <p class="marca-num">Editor</p>
-          <h3>Modo Sin Conexión</h3>
+          <h3>Modo sin conexión</h3>
           <p>Edita vídeos ya grabados para añadir el marcador de la misma forma que lo harías en directo.</p>
         </div>
         <div class="caracteristica">
           <p class="marca-num">Escuchando</p>
           <h3>Personalizable</h3>
-          <p>¿Has notado un error?¿Echas en falta alguna función? Ponte en contacto y lo solucionamos. kendostream@outlook.com</p>
+          <p>¿Has notado un error? ¿Echas en falta alguna función? <a class="enlace-rojo" href="#contacto">Ponte en contacto</a> y lo solucionamos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="disenos">
+  <section id="demo">
+    <div class="envoltura">
+      <div class="seccion-cabecera">
+        <p class="seccion-eyebrow">En acción</p>
+        <h2>Cómo se ve</h2>
+        <p>Un combate retransmitido con KendoSTREAM.</p>
+      </div>
+      <div class="demo-marco">
+        <iframe
+          src="https://www.youtube.com/embed/PQhllM6W5TE"
+          title="KendoSTREAM, vídeo de demostración"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="disenos" style="background:var(--superficie); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
     <div class="envoltura">
       <div class="seccion-cabecera">
         <p class="seccion-eyebrow">Personalización</p>
         <h2>Cuatro diseños, el mismo motor</h2>
-        <p>Cámbialo desde la página de configuración, sin tocar ni una línea de código. Más diseños en el futuro</p>
+        <p>Cámbialo desde la página de configuración, sin tocar ni una línea de código. Y vendrán más.</p>
       </div>
       <div class="disenos-grid">
         <div class="diseno-card">
-          <img src="assets/img/comparativa-clasico.png" alt="Diseño Clásico del overlay" />
+          <img src="assets/img/comparativa-clasico.jpg" alt="Diseño Clásico del overlay" loading="lazy" />
           <div class="diseno-card-info">
             <p class="etiqueta">Predeterminado</p>
             <h3>Clásico</h3>
@@ -156,7 +190,7 @@
           </div>
         </div>
         <div class="diseno-card">
-          <img src="assets/img/comparativa-kendostream.png" alt="Diseño KendoSTREAM del overlay" />
+          <img src="assets/img/comparativa-kendostream.jpg" alt="Diseño KendoSTREAM del overlay" loading="lazy" />
           <div class="diseno-card-info">
             <p class="etiqueta">Identidad de marca</p>
             <h3>KendoSTREAM</h3>
@@ -164,112 +198,51 @@
           </div>
         </div>
         <div class="diseno-card">
-          <img src="assets/img/comparativa-neon.png" alt="Diseño KendoSTREAM del overlay" />
+          <img src="assets/img/comparativa-neon.jpg" alt="Diseño Neón del overlay" loading="lazy" />
           <div class="diseno-card-info">
             <p class="etiqueta">Moderno</p>
             <h3>Neón</h3>
-            <p>Estética futurista con marcos y bordes luminiscentes</p>
+            <p>Estética futurista con marcos y bordes luminiscentes.</p>
           </div>
         </div>
         <div class="diseno-card">
-          <img src="assets/img/comparativa-samurai.png" alt="Diseño KendoSTREAM del overlay" />
+          <img src="assets/img/comparativa-samurai.jpg" alt="Diseño Samurai del overlay" loading="lazy" />
           <div class="diseno-card-info">
-            <p class="etiqueta">Estilo Japonés</p>
+            <p class="etiqueta">Estilo japonés</p>
             <h3>Samurai</h3>
-            <p>Corte de caligrafía japonesa tradicional.</p>
+            <p>Inspirado en la caligrafía japonesa tradicional.</p>
           </div>
         </div>
       </div>
+      <p style="margin-top:28px;"><a class="enlace-rojo" href="temas.html">Ver todos los temas y cómo instalar nuevos →</a></p>
     </div>
   </section>
 
-  <section id="demo" style="background:var(--superficie); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
+  <section class="cta-banda" style="padding:56px 0;">
     <div class="envoltura">
-      <div class="seccion-cabecera">
-        <p class="seccion-eyebrow">En acción</p>
-        <h2>Como se ve</h2>
-        <p>Un combate real retransmitido con KendoSTREAM.</p>
+      <div>
+        <h2>Listo en unos minutos</h2>
+        <p>Necesitas Node.js y OBS Studio, los dos gratuitos. La guía cubre Windows y Mac, con solución de problemas incluida.</p>
       </div>
-      <div class="demo-marco">
-        <iframe
-          width="100%"
-          height="600"
-          src="https://www.youtube.com/embed/PQhllM6W5TE"
-          title="KendoSTREAM Demo"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
+      <div class="cta-botones">
+        <a href="descargas/kendostream.zip" download class="boton boton-primario">Descargar <span data-ks-version></span></a>
+        <a href="instalacion.html" class="boton boton-secundario">Guía de instalación</a>
+        <a href="descargas/manual-kendostream.pdf" target="_blank" rel="noopener" class="boton boton-secundario">Manual (PDF)</a>
       </div>
     </div>
   </section>
 
-  <section id="instalacion">
+  <section id="contacto">
     <div class="envoltura">
-      <div class="seccion-cabecera">
-        <p class="seccion-eyebrow">Empezar</p>
-        <h2>Instalación en tres pasos</h2>
-        <p>Necesitas Node.js y OBS Studio, los dos gratuitos. La guía completa cubre Windows y Mac, con solución de problemas incluida.</p>
-      </div>
-      <div class="instalacion-grid">
-        <ol class="pasos">
-          <li>
-            <div>
-              <h4>Descarga el proyecto</h4>
-              <p>Consigue la última versión desde la página de Releases de GitHub (Próximamente).</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h4>Instala las dependencias</h4>
-              <p>Un único comando, la primera vez que lo uses.</p>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h4>Arranca el servidor y añade el overlay a OBS</h4>
-              <p>Como fuente de Navegador, con fondo transparente.</p>
-            </div>
-          </li>
-        </ol>
-        <div class="terminal">
-          <div class="terminal-barra"><span></span><span></span><span></span></div>
-          <pre><span class="cmd">cd kendostream</span>
-          <span class="cmd">npm install</span>
-          <span class="out">añadiendo dependencias…</span>
-          <span class="cmd">npm start</span>
-          <span class="out">KendoSTREAM escuchando en http://localhost:3000</span></pre>
+      <div class="contacto-caja">
+        <div>
+          <h2>Contacto</h2>
+          <p>
+            ¿Dudas, errores, ideas o quieres usar KendoSTREAM en tu torneo? Escríbenos y te ayudamos.
+            También si quieres <a class="enlace-rojo" href="colaboradores.html">colaborar</a>.
+          </p>
         </div>
-      </div>
-      <p style="margin-top:36px; color:var(--acero); font-size:0.9rem;">
-        ¿Te bloquea el antivirus o el Control de aplicaciones inteligentes de Windows?
-        La <a href="#documentacion" style="color:var(--carmesi); text-decoration:none;">guía de instalación</a>
-        explica exactamente qué hacer.
-      </p>
-    </div>
-  </section>
-
-  <section id="documentacion" style="background:var(--superficie); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
-    <div class="envoltura">
-      <div class="seccion-cabecera">
-        <p class="seccion-eyebrow">Documentación</p>
-        <h2>Todo lo que hace falta para ponerlo en marcha</h2>
-      </div>
-      <div class="docs-grid">
-      <a href="descargas/manual-kendostream.docx" download class="doc-card">
-        <h3>Manual de instalación</h3>
-        <p>Paso a paso para Windows y Mac, configuración de OBS, y solución de problemas habituales.</p>
-        <span class="flecha">Descargar manual →</span>
-      </a>
-        <a href="#" class="doc-card">
-          <h3>Vídeos tutoriales</h3>
-          <p>Instalación, primer combate, y configuración del modo Campeonato Importante, explicados paso a paso.</p>
-          <span class="flecha">Próximamente →</span>
-        </a>
-        <a href="#" class="doc-card">
-          <h3>Repositorio en GitHub</h3>
-          <p>Código fuente, historial de versiones, y el lugar para reportar cualquier problema que encuentres.</p>
-          <span class="flecha">Próximamente  →</span>
-        </a>
+        <a class="boton boton-primario" href="mailto:kendostream@outlook.com">kendostream@outlook.com</a>
       </div>
     </div>
   </section>
@@ -280,32 +253,20 @@
         <span class="sello">PolyForm Noncommercial 1.0.0</span>
         <p>
           KendoSTREAM es gratuito para cualquier uso no comercial: clubes, federaciones,
-          competiciones, uso personal o educativo. No está permitido venderlo, modificarflo
+          competiciones, uso personal o educativo. No está permitido venderlo, modificarlo
           ni redistribuirlo con fines comerciales sin consentimiento del creador.
-          Si desea realizar cualquier colaboración, sugerencia o petición
-          por favor contacte al siguiente email: kendoSTREAM@outlook.com
+          Para cualquier colaboración, sugerencia o petición, escribe a
+          <a class="enlace-rojo" href="mailto:kendostream@outlook.com">kendostream@outlook.com</a>.
         </p>
       </div>
     </div>
   </section>
 
-  <footer>
-    <div class="envoltura footer-grid">
-      <div class="footer-marca">
-        <img src="assets/img/logo.png" alt="KendoSTREAM" />
-        KendoSTREAM
-      </div>
-      <ul class="footer-enlaces">
-        <li><a href="#que-es">Qué es</a></li>
-        <li><a href="#instalacion">Descargar</a></li>
-        <li><a href="#documentacion">Documentación</a></li>
-        <li><a href="#">GitHub</a></li>
-      </ul>
-    </div>
-    <div class="envoltura">
-      <p class="footer-nota">© 2026 Jorge Pascual Lansac. Distribuido bajo PolyForm Noncommercial License 1.0.0.</p>
-    </div>
-  </footer>
+  <div id="ks-pie"></div>
 
+  <script src="datos/novedades.js"></script>
+  <script src="datos/eventos.js"></script>
+  <script src="datos/noticias.js"></script>
+  <script src="js/layout.js"></script>
 </body>
 </html>

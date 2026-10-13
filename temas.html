@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Temas — KendoSTREAM</title>
+  <meta name="description" content="Diseños del overlay de KendoSTREAM: los incluidos en el paquete, los descargables y cómo instalar nuevos temas." />
+  <meta property="og:title" content="Temas — KendoSTREAM" />
+  <meta property="og:description" content="Diseños del overlay de KendoSTREAM: los incluidos en el paquete, los descargables y cómo instalar nuevos temas." />
+  <meta property="og:image" content="https://kendostream.com/assets/img/hero-kendostream.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="ks-cabecera"></div>
+
+  <div class="pagina-cabecera">
+    <div class="envoltura">
+      <p class="seccion-eyebrow">Personalización</p>
+      <h1>Temas del overlay</h1>
+      <p>Los diseños disponibles para el marcador. Cuatro vienen en el paquete; el resto los puedes descargar aquí cuando salgan.</p>
+    </div>
+  </div>
+
+  <section class="compacta">
+    <div class="envoltura">
+      <div class="temas-grid" id="grid-temas"></div>
+    </div>
+  </section>
+
+  <section class="compacta" id="instalar-temas" style="background:var(--superficie); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
+    <div class="envoltura">
+      <div class="seccion-cabecera">
+        <p class="seccion-eyebrow">Cómo se instala</p>
+        <h2>Añadir un tema nuevo</h2>
+        <p>No hay que tocar código: basta con copiar los archivos del tema a su carpeta.</p>
+      </div>
+      <ol class="pasos">
+        <li><div><h4>Descarga y descomprime el tema</h4><p>Dentro encontrarás un archivo <code>.css</code> (por ejemplo <code>midiseno.css</code>) y, a veces, imágenes que usa el diseño.</p></div></li>
+        <li><div><h4>Cópialo a la carpeta de temas</h4><p>Pega <strong>todos</strong> los archivos en <code>kendostream/public/overlay/temas/</code>, junto a los temas que ya hay (<code>clasico.css</code>, <code>neon.css</code>…).</p></div></li>
+        <li><div><h4>Recarga la página de configuración</h4><p>Abre <code>http://localhost:3000/config</code> y recarga la página. No hace falta reiniciar KendoSTREAM.</p></div></li>
+        <li><div><h4>Elígelo</h4><p>El tema aparece solo en el desplegable «Diseño del marcador». Si lo tienes ya añadido a OBS, haz clic derecho en la fuente → «Actualizar caché de la página actual».</p></div></li>
+      </ol>
+      <div class="aviso-caja" style="margin-top:28px;">
+        <strong>Importante:</strong> instala solo temas de fuentes de confianza, y comprueba en cada tema la versión mínima de KendoSTREAM con la que es compatible.
+        ¿Quieres crear el tuyo? Parte de <code>clasico.css</code>: todos los temas usan las mismas clases y solo cambia el aspecto.
+      </div>
+    </div>
+  </section>
+
+  <div id="ks-pie"></div>
+
+  <script src="datos/novedades.js"></script>
+  <script src="datos/eventos.js"></script>
+  <script src="datos/temas.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

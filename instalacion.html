@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instalación — KendoSTREAM</title>
+  <meta name="description" content="Cómo instalar KendoSTREAM en Windows o Mac, conectarlo a OBS Studio y descargar el manual en PDF." />
+  <meta property="og:title" content="Instalación — KendoSTREAM" />
+  <meta property="og:description" content="Cómo instalar KendoSTREAM en Windows o Mac, conectarlo a OBS Studio y descargar el manual en PDF." />
+  <meta property="og:image" content="https://kendostream.com/assets/img/hero-kendostream.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="ks-cabecera"></div>
+
+  <div class="pagina-cabecera">
+    <div class="envoltura">
+      <p class="seccion-eyebrow">Empezar</p>
+      <h1>Instalación</h1>
+      <p>Resumen para ponerlo en marcha. El manual en PDF incluye todos los detalles y la solución de problemas.</p>
+      <div class="cta-botones" style="margin-top:24px;">
+        <a href="descargas/kendostream.zip" download class="boton boton-primario">Descargar KendoSTREAM <span data-ks-version></span></a>
+        <a href="descargas/manual-kendostream.pdf" target="_blank" rel="noopener" class="boton boton-secundario">Descargar manual (PDF)</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="compacta">
+    <div class="envoltura">
+      <h2 class="subtitulo">1. Lo que necesitas</h2>
+      <div class="dos-col">
+        <div class="aviso-caja"><strong>Node.js (versión LTS).</strong> Es lo que ejecuta el servidor de KendoSTREAM. Descárgalo en <a class="enlace-rojo" href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a>, eligiendo siempre la versión marcada como «LTS».</div>
+        <div class="aviso-caja"><strong>OBS Studio.</strong> El programa con el que se hace la retransmisión y donde se añade el overlay. Descárgalo en <a class="enlace-rojo" href="https://obsproject.com" target="_blank" rel="noopener">obsproject.com</a>.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="compacta" style="background:var(--superficie); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
+    <div class="envoltura">
+      <h2 class="subtitulo">2. Instala KendoSTREAM</h2>
+      <div class="instalacion-grid">
+        <div>
+          <h3 style="font-family:var(--fuente-marca); font-size:1rem; margin-bottom:16px;">Windows</h3>
+          <ol class="pasos">
+            <li><div><h4>Descarga y descomprime</h4><p>Copia la carpeta <code>kendostream</code> a una ubicación fija (por ejemplo, Documentos) y evita moverla después.</p></div></li>
+            <li><div><h4>Abre una terminal en esa carpeta</h4><p>En el Explorador de archivos, haz clic en la barra de direcciones, escribe <code>cmd</code> y pulsa Enter.</p></div></li>
+            <li><div><h4>Instala y arranca</h4><p><code>npm install</code> (solo la primera vez) y después <code>npm start</code>. Deja la ventana abierta mientras lo uses.</p></div></li>
+            <li><div><h4>Abre el panel</h4><p>Entra en <code>http://localhost:3000/panel</code> desde tu navegador.</p></div></li>
+          </ol>
+        </div>
+        <div>
+          <div class="terminal">
+            <div class="terminal-barra"><span></span><span></span><span></span></div>
+            <pre><span class="cmd">cd kendostream</span>
+<span class="cmd">npm install</span>
+<span class="out">añadiendo dependencias…</span>
+<span class="cmd">npm start</span>
+<span class="out">KendoSTREAM escuchando en http://localhost:3000</span></pre>
+          </div>
+          <h3 style="font-family:var(--fuente-marca); font-size:1rem; margin:28px 0 12px 0;">Mac</h3>
+          <p class="nota">Entra en <code>kendostream/instalacion/mac</code> y haz doble clic en <code>instalar.command</code> (la primera vez: clic derecho → Abrir). Crea un icono en el Escritorio para abrir el panel en el futuro.</p>
+        </div>
+      </div>
+      <p class="nota" style="margin-top:28px;">
+        ¿Te bloquea el antivirus o el Control de aplicaciones inteligentes de Windows? El
+        <a class="enlace-rojo" href="descargas/manual-kendostream.pdf" target="_blank" rel="noopener">manual</a>
+        explica exactamente qué hacer.
+      </p>
+    </div>
+  </section>
+
+  <section class="compacta">
+    <div class="envoltura">
+      <h2 class="subtitulo">3. Añade el overlay a OBS</h2>
+      <ol class="pasos">
+        <li><div><h4>Nueva fuente de navegador</h4><p>En el panel «Fuentes» de OBS pulsa «+» y elige «Navegador».</p></div></li>
+        <li><div><h4>URL del overlay</h4><p>Escribe <code>http://localhost:3000/overlay</code>.</p></div></li>
+        <li><div><h4>Resolución</h4><p>Ancho y alto iguales a los del lienzo de OBS (normalmente 1920 × 1080).</p></div></li>
+        <li><div><h4>Colócalo encima de la imagen del combate</h4><p>El overlay debe estar arriba en la lista de fuentes, por encima de la cámara o del vídeo.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="compacta" style="background:var(--superficie); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
+    <div class="envoltura">
+      <div class="seccion-cabecera">
+        <p class="seccion-eyebrow">Vídeo tutoriales</p>
+        <h2>Mejor si lo ves hecho</h2>
+      </div>
+      <div class="videos-grid">
+        <div class="video-bloque">
+          <h3>¿Cómo instalarlo?</h3>
+          <p>Cómo instalar y abrir KendoSTREAM.</p>
+          <div class="demo-marco"><iframe src="https://www.youtube.com/embed/6twfUjgJ0tg" title="KendoSTREAM: cómo instalarlo" loading="lazy" allowfullscreen></iframe></div>
+        </div>
+        <div class="video-bloque">
+          <h3>¿Cómo conectarlo?</h3>
+          <p>Cómo conectar KendoSTREAM a OBS Studio.</p>
+          <div class="demo-marco"><iframe src="https://www.youtube.com/embed/iTo5V6FxAtU" title="KendoSTREAM: cómo conectarlo a OBS" loading="lazy" allowfullscreen></iframe></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="compacta">
+    <div class="envoltura">
+      <div class="contacto-caja">
+        <div>
+          <h2>¿Algo no funciona?</h2>
+          <p>Consulta la solución de problemas del manual y, si sigue sin salir, escríbenos contando qué ocurre y en qué sistema (Windows o Mac).</p>
+        </div>
+        <div class="cta-botones">
+          <a href="descargas/manual-kendostream.pdf" target="_blank" rel="noopener" class="boton boton-secundario">Manual (PDF)</a>
+          <a href="mailto:kendostream@outlook.com" class="boton boton-primario">Escribir</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="ks-pie"></div>
+
+  <script src="datos/novedades.js"></script>
+  <script src="datos/eventos.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

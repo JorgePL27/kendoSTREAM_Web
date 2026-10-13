@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticias y eventos — KendoSTREAM</title>
+  <meta name="description" content="Noticias de KendoSTREAM y agenda de torneos de kendo retransmitidos con la herramienta." />
+  <meta property="og:title" content="Noticias y eventos — KendoSTREAM" />
+  <meta property="og:description" content="Noticias de KendoSTREAM y agenda de torneos de kendo retransmitidos con la herramienta." />
+  <meta property="og:image" content="https://kendostream.com/assets/img/hero-kendostream.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="ks-cabecera"></div>
+
+  <div class="pagina-cabecera">
+    <div class="envoltura">
+      <p class="seccion-eyebrow">Actualidad</p>
+      <h1>Noticias y eventos</h1>
+      <p>Lo último sobre la herramienta y los torneos de kendo que se retransmiten con ella.</p>
+    </div>
+  </div>
+
+  <section class="compacta" id="eventos">
+    <div class="envoltura">
+      <h2 class="subtitulo">Próximos eventos</h2>
+      <div class="lista-items" id="lista-eventos-proximos"></div>
+      <h2 class="subtitulo" id="cabeceraPasados" style="margin-top:44px;">Eventos pasados</h2>
+      <div class="lista-items" id="lista-eventos-pasados"></div>
+    </div>
+  </section>
+
+  <section class="compacta" id="noticias" style="background:var(--superficie); border-top:1px solid var(--borde); border-bottom:1px solid var(--borde);">
+    <div class="envoltura">
+      <h2 class="subtitulo">Noticias</h2>
+      <div class="lista-items" id="lista-noticias"></div>
+    </div>
+  </section>
+
+  <section class="compacta">
+    <div class="envoltura">
+      <div class="contacto-caja">
+        <div>
+          <h2>¿Organizas un torneo con KendoSTREAM?</h2>
+          <p>Cuéntanoslo y lo publicamos aquí, con enlace a vuestra retransmisión.</p>
+        </div>
+        <a class="boton boton-primario" data-mailto-asunto="Evento con KendoSTREAM"
+           data-mailto-cuerpo="Nombre del evento:\nFecha y hora (hora de España):\nLugar:\nEnlace a la retransmisión o web:\nBreve descripción:\n">Avisar de un evento</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="ks-pie"></div>
+
+  <script src="datos/novedades.js"></script>
+  <script src="datos/eventos.js"></script>
+  <script src="datos/noticias.js"></script>
+  <script src="js/layout.js"></script>
+</body>
+</html>

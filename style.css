@@ -633,3 +633,8 @@ section.compacta { padding: 56px 0; }
   .boton-peq { padding: 8px 12px; font-size: 0.8rem; }
   .evento-destacado, .version-actual, .contacto-caja { padding: 24px 18px; }
 }
+
+.evento-reloj-col { flex: 0 1 440px; display: flex; flex-direction: column; gap: 16px; }
+.evento-reloj-col .cuenta { flex: none; }
+.evento-reloj-col .boton { margin-top: 0; text-align: center; }
+.evento-reloj-col .en-directo { justify-content: center; }

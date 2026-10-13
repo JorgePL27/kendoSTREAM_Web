@@ -26,13 +26,13 @@
    ============================================================ */
 window.KS_EVENTOS = [
   {
-    titulo: "Campeonato de Aragón de Kendo",
+    titulo: "Campeonato de Aragón de Kendo 2026",
     fecha: "2026-10-18T10:00:00+02:00",
     duracionHoras: 8,
     lugar: "Aragón",
     descripcion: "Primer torneo retransmitido con KendoSTREAM, estrenando la versión 2.1.",
-    enlace: "",
-    textoEnlace: "Ver la retransmisión",
+    enlace: "https://www.youtube.com/watch?v=poGoMjy4NHA",
+    textoEnlace: "Ver la retransmisión en Youtube",
     cuentaAtras: true,
     kendostream: true
   }

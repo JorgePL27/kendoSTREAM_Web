@@ -144,9 +144,10 @@
         "<h2>" + esc(e.titulo) + "</h2>" +
         '<p class="evento-meta">' + esc(fmtFecha(e.fecha, { diaSemana: true })) + lugar + "</p>" +
         (e.descripcion ? '<p class="evento-desc">' + esc(e.descripcion) + "</p>" : "") +
-        (e.enlace ? '<a class="boton boton-primario" href="' + esc(e.enlace) + '" target="_blank" rel="noopener">' + esc(e.textoEnlace || "Ver más") + "</a>" : "") +
         "</div>" +
-        '<div id="eventoReloj"></div>' +
+        '<div class="evento-reloj-col"><div id="eventoReloj"></div>' +
+        (e.enlace ? '<a id="eventoBoton" class="boton boton-primario" href="' + esc(e.enlace) + '" target="_blank" rel="noopener">' + esc(e.textoEnlace || "Ver la retransmisión") + "</a>" : "") +
+        "</div>" +
         "</div></div></div>";
     }
 
@@ -161,7 +162,8 @@
       }
       var p = partes(parse(e.fecha).getTime() - ahora);
       if (grande) {
-        $("eventoEtiqueta").textContent = st === "directo" ? "Ahora mismo" : "Próximo evento";
+        var bd = $("eventoBoton");
+        if (bd) bd.textContent = st === "directo" ? "▶ Ver el directo ahora" : (e.textoEnlace || "Ver la retransmisión");
         $("eventoReloj").innerHTML = st === "directo"
           ? '<span class="en-directo"><span class="punto-vivo" style="background:var(--carmesi)"></span>¡EN DIRECTO!</span>'
           : '<div class="cuenta" role="timer" aria-label="Cuenta atrás">' +

@@ -205,6 +205,17 @@
     $("destacadosLista").innerHTML = lista.map(tarjetaNoticia).join("");
   }
 
+  function apartadosHtml(v) {
+    if (!v.apartados) return "";
+    return v.apartados.map(function (a) {
+      return '<div class="apartado"><h4>' + esc(a.titulo) + "</h4>" +
+        (a.grupos || []).map(function (g) {
+          return '<p class="apartado-etq">' + esc(g.etiqueta) + "</p><ul>" +
+            (g.cambios || []).map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>";
+        }).join("") + "</div>";
+    }).join("");
+  }
+
   function montarNoticias() {
     var cn = $("lista-noticias");
     if (cn) {
@@ -258,7 +269,8 @@
         return '<div class="changelog-item"><div class="version">v' + esc(v.version) +
           (v.fecha ? "<small>" + esc(fmtFecha(v.fecha)) + "</small>" : "") + "</div><div>" +
           (v.titulo ? "<h3>" + esc(v.titulo) + "</h3>" : "") +
-          "<ul>" + (v.cambios || []).map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>" +
+                    "<ul>" + (v.cambios || []).map(function (c) { return "<li>" + esc(c) + "</li>"; }).join("") + "</ul>" +
+          apartadosHtml(v) +
           (v.descarga ? '<a class="enlace-rojo" href="' + esc(v.descarga) + '" download>Descargar esta versión →</a>' : "") +
           "</div></div>";
       }).join("");

@@ -20,7 +20,7 @@ window.KS_NOTICIAS = [
     fecha: "2026-10-13",
     tipo: "novedad",
     titulo: "KendoSTREAM 2.1: registro de resultados y encuentros por equipos",
-    resumen: "La nueva versión estará disponible para descargar desde el domingo 18 de octubre, el día en que se estrena en directo en el Campeonato de Aragón. Incluye registro de resultados en un archivo por evento, mensaje de resultado en el overlay y suma automática en los encuentros por equipos.",
+    resumen: "La nueva versión estará disponible para descargar desde el domingo 18 de octubre, el día en que se estrena en directo en el Campeonato de Aragón.  Incluye registro de resultados en un archivo por evento, mensaje de resultado en el overlay, suma automática en los encuentros por equipos y un organizador de torneos con equipos, listas guardables y grupos mejorados.",
     enlace: "novedades.html",
     textoEnlace: "Ver todos los cambios",
     portada: true

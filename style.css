@@ -638,3 +638,10 @@ section.compacta { padding: 56px 0; }
 .evento-reloj-col .cuenta { flex: none; }
 .evento-reloj-col .boton { margin-top: 0; text-align: center; }
 .evento-reloj-col .en-directo { justify-content: center; }
+
+/* Apartados dentro de una versión (novedades) */
+.apartado { margin-top: 18px; padding: 16px 18px; border: 1px solid var(--borde); border-left: 3px solid var(--carmesi); border-radius: 6px; background: var(--superficie); }
+.apartado h4 { font-family: var(--fuente-marca); font-size: 0.92rem; margin-bottom: 4px; }
+.apartado ul { padding-left: 18px; color: var(--acero); font-size: 0.92rem; }
+.apartado li { margin-bottom: 6px; }
+.apartado-etq { font-family: var(--fuente-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--carmesi); margin: 14px 0 6px 0; }

@@ -33,6 +33,39 @@ window.KS_NOVEDADES = [
       "Carpeta de resultados configurable en /config, con botón «Probar carpeta».",
       "Encuentros por equipos de 3 o 5 integrantes (eliminatoria o grupos): las victorias, empates e ippones se suman solos, con combate de desempate.",
       "Categoría y modalidad visibles siempre mientras se registra."
+    ],
+    apartados: [
+      {
+        titulo: "Organizador de torneos (actualización de octubre de 2026)",
+        grupos: [
+          {
+            etiqueta: "Nuevo",
+            cambios: [
+              "Torneos por equipos: nuevo selector Individual / Por equipos en la lista de participantes. En modo equipos se introduce el nombre del equipo (obligatorio) y el club (opcional); el campo Dan y la opción «Mostrar el Dan en el cuadro» se ocultan, porque los equipos no llevan grado.",
+              "Integrantes opcionales: se pueden indicar los nombres de los integrantes de cada equipo, de 3 o de 5 (puestos Senpo a Taisho). Un equipo de 3 admite 1 hueco en blanco y uno de 5 admite 2. Si no se escribe ningún nombre, no se valida nada. Los integrantes se muestran en la lista de equipos y los huecos aparecen señalados.",
+              "Los equipos sin club se muestran correctamente en el cuadro, en la clasificación de grupos y en los PDF.",
+              "Guardar y cargar listas: nuevos botones «Guardar lista (.json)» y «Cargar lista (.json)» para guardar la lista de participantes y recuperarla más tarde. Se conservan el orden, el club, el Dan y las marcas de cabeza de serie (y, en equipos, el tamaño y los integrantes). Al cargar se reemplaza la lista actual, con confirmación si ya había participantes; hay mensajes claros si el archivo no es válido y aviso si trae más cabezas de serie de las permitidas.",
+              "Casilla «Evitar cruces del mismo club», activada por defecto, que afecta a la primera ronda del cuadro y al reparto en grupos. Si se desactiva, el sorteo es completamente aleatorio y el cuadro indica cuántas coincidencias de club hay. En los grupos se avisa cuando una coincidencia es inevitable."
+            ]
+          },
+          {
+            etiqueta: "Mejorado",
+            cambios: [
+              "Fase de grupos con prioridad para los grupos de 3: por ejemplo, 12 competidores forman 4 grupos de 3 en lugar de 3 grupos de 4. Los grupos son de 4 o de 3, con un solo grupo de 2 como máximo.",
+              "El número de grupos se elige para que el cuadro eliminatorio no tenga huecos: con 2 clasificados por grupo, 12 competidores pasan a un cuadro completo de 8.",
+              "Los byes del cruce solo los reciben primeros de grupo. Antes, con un número de grupos que no era potencia de 2, un primero y un segundo podían pasar directos a la ronda siguiente. Si con un número concreto de participantes no se puede evitar, la aplicación lo avisa.",
+              "El PDF de plantilla de grupos refleja exactamente el mismo cruce que el cuadro real."
+            ]
+          },
+          {
+            etiqueta: "Corregido",
+            cambios: [
+              "El Dan ya aparece en el cuadro (pantalla y PDF) cuando está activada la opción «Mostrar el Dan en el cuadro».",
+              "El campo «Clasificados por grupo» ya se oculta correctamente cuando se elige eliminatoria directa."
+            ]
+          }
+        ]
+      }
     ]
   },
   {

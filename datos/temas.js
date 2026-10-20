@@ -61,7 +61,7 @@ window.KS_TEMAS = [
     nombre: "Otoño",
     etiqueta: "Temporada",
     descripcion: "Estilo de naranjas y hojas caidas perfectos para la temporada.",
-    imagen: "assets/img/comparativa-otono.png",
+    imagen: "assets/img/comparativa-otoño.png",
     incluido: false,
     descarga: "descargas/temas/otono.zip",
     autor: "KendoSTREAM",

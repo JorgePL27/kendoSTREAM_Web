@@ -16,6 +16,24 @@
                false -> solo en la página de noticias.
    ============================================================ */
 window.KS_NOTICIAS = [
+    {
+    fecha: "2026-10-20",
+    tipo: "novedad",
+    titulo: "Dos temas nuevos para el overlay: Otoño y Halloween",
+    resumen: "Ya puedes descargar dos diseños nuevos para el marcador: «Otoño», estilo de naranjas y hojas caidas perfectos para la temporada, y «Halloween», para aquellas competiciones de espanto o temáticas. Se instalan copiando los archivos a la carpeta de temas, sin tocar código.",
+    enlace: "temas.html",
+    textoEnlace: "Ver los temas e instalarlos",
+    portada: true
+  },
+  {
+    fecha: "2026-10-19",
+    tipo: "noticia",
+    titulo: "Así fue la primera retransmisión con KendoSTREAM",
+    resumen: "El domingo 18 de octubre se estrenó KendoSTREAM 2.1 en directo en el Campeonato de Aragón de Kendo. Aunque hubo ciertos problemas técnicos relacionados con el sonido que nos obligaron a deshabilitarlo, la retransmisión fue un éxito. Pudimos disfrutar de muchos combates de los que integrarán la selección Aragones en el próximo campeonato de España. Os dejamos el vídeo completo de campeonato. Gracias a todos los asistentes que ayudaron con toda la organización y correcto funcionamiento y a todas esas personas que os acercasteis al Streaming.",
+    enlace: "https://www.youtube.com/watch?v=TU_ID",
+    textoEnlace: "Ver la retransmisión",
+    portada: true
+  },
   {
     fecha: "2026-10-13",
     tipo: "novedad",

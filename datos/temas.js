@@ -56,7 +56,28 @@ window.KS_TEMAS = [
     descarga: "",
     autor: "KendoSTREAM",
     desde: "1.3"
+  },
+  {
+    nombre: "Otoño",
+    etiqueta: "Temporada",
+    descripcion: "Estilo de naranjas y hojas caidas perfectos para la temporada.",
+    imagen: "assets/img/comparativa-otono.jpg",
+    incluido: false,
+    descarga: "descargas/temas/otono.zip",
+    autor: "KendoSTREAM",
+    desde: "2.1"
+  },
+  {
+    nombre: "Halloween",
+    etiqueta: "Temporada",
+    descripcion: "Diseño con tonos naranja y negro, ideal para competiciones temáticas.",
+    imagen: "assets/img/comparativa-halloween.jpg",
+    incluido: false,
+    descarga: "descargas/temas/halloween.zip",
+    autor: "KendoSTREAM",
+    desde: "2.1"
   }
+  // Ejemplo de un tema descargable aparte.
   // Ejemplo de un tema descargable aparte. Para usarlo: pon una coma tras la
   // llave "}" del último tema, y copia aquí el bloque sin las barras "//":
   //

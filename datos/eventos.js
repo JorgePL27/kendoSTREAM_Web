@@ -32,8 +32,8 @@ window.KS_EVENTOS = [
     lugar: "Aragón",
     descripcion: "Primer torneo retransmitido con KendoSTREAM, estrenando la versión 2.1.",
     enlace: "https://www.youtube.com/watch?v=poGoMjy4NHA",
-    textoEnlace: "Ver la retransmisión en Youtube",
-    cuentaAtras: true,
+    textoEnlace: "Ver la retransmisión",
+    cuentaAtras: false,
     kendostream: true
   }
 ];

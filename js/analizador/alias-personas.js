@@ -279,25 +279,47 @@ function analizarRegistros(modelo, opciones = {}) {
   });
 
   // --- Equipos --------------------------------------------------------------
+  // Lo que ya dicen los registros del esquema 2: el club de cada lado individual (por su texto)
+  // y el club con el que combate cada equipo (por su equipoId).
+  const clubIdPorTexto = new Map();
+  const clubIdPorEquipoReg = new Map();
+  registros.forEach((r) => {
+    if (r.hueco || !r.clubIdReg) return;
+    if (r.esEquipo) {
+      if (r.equipoIdReg && !clubIdPorEquipoReg.has(r.equipoIdReg)) clubIdPorEquipoReg.set(r.equipoIdReg, r.clubIdReg);
+    } else if (r.claveClubTexto && !clubIdPorTexto.has(r.claveClubTexto)) {
+      clubIdPorTexto.set(r.claveClubTexto, r.clubIdReg);
+    }
+  });
   const buscarClubDeEquipo = (clave) => {
     if (clubPorClave.has(clave)) return clubPorClave.get(clave);
     const prefijo = Array.from(clubPorClave.keys()).filter((p) => clave.startsWith(`${p} `))
       .sort((a, b) => b.length - a.length)[0];
-    return prefijo ? clubPorClave.get(prefijo) : null;
+    if (prefijo) return clubPorClave.get(prefijo);
+    if (clubIdPorTexto.has(clave)) return { id: clubIdPorTexto.get(clave) };
+    const prefijoReg = Array.from(clubIdPorTexto.keys()).filter((p) => clave.startsWith(`${p} `))
+      .sort((a, b) => b.length - a.length)[0];
+    return prefijoReg ? { id: clubIdPorTexto.get(prefijoReg) } : null;
   };
   equipos.forEach((equipo) => {
     if (equipo.clubId === null) {
+      const delRegistro = clubIdPorEquipoReg.get(equipo.id);
+      if (delRegistro) {
+        equipo.clubId = delRegistro;
+        return;
+      }
       const club = buscarClubDeEquipo(claveTexto(equipo.nombre));
       if (club) equipo.clubId = club.id;
     }
   });
   Array.from(nombresEquipo.keys()).sort().forEach((clave) => {
     if (equipoPorClave.has(clave)) return;
+    const equipoIdReg = equipoIdPorClave.get(clave);
     const club = buscarClubDeEquipo(clave);
     const equipo = {
-      id: equipoIdPorClave.get(clave) || generarId(),
+      id: equipoIdReg || generarId(),
       nombre: textoMasFrecuente(nombresEquipo.get(clave)),
-      clubId: club ? club.id : null
+      clubId: (equipoIdReg && clubIdPorEquipoReg.get(equipoIdReg)) || (club ? club.id : null)
     };
     equipos.push(equipo);
     equipoPorClave.set(clave, equipo);
@@ -312,6 +334,22 @@ function analizarRegistros(modelo, opciones = {}) {
     const propuesta = palabras.length > 1 && /^(\d+|[IVX]+|[A-Za-z])$/.test(ultima)
       ? palabras.slice(0, -1).join(" ")
       : null;
+    // "AKZ 1", "AKZ 2": el número final indica varios equipos del mismo club. No hay nada que
+    // preguntar: se asigna al club "AKZ" (y se crea si todavía no existe).
+    if (propuesta && /^(\d+|[IVX]+)$/.test(ultima)) {
+      const claveBase = claveTexto(propuesta);
+      const clubBase = clubPorClave.get(claveBase) || { id: generarId(), nombre: propuesta, alias: [] };
+      if (!clubPorClave.has(claveBase)) {
+        clubes.push(clubBase);
+        registrarClub(clubBase);
+      }
+      equipo.clubId = clubBase.id;
+      decisiones.push({
+        tipo: "club-de-equipo-deducido",
+        mensaje: `«${equipo.nombre}» se asigna al club «${clubBase.nombre}»: el número final indica que hay varios equipos del mismo club.`
+      });
+      return;
+    }
     dudas.push({
       tipo: "club-de-equipo",
       equipoId: equipo.id,

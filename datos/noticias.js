@@ -16,7 +16,16 @@
                false -> solo en la página de noticias.
    ============================================================ */
 window.KS_NOTICIAS = [
-    {
+  {
+    fecha: "2026-10-25",
+    tipo: "novedad",
+    titulo: "Nuevo: el Analizador de campeonatos, ya en la web",
+    resumen: "Carga los archivos de resultados de tu torneo y obtén podios, fighting spirit, rankings y estadísticas por competidor. Todo se procesa en tu navegador: no se sube nada.",
+    enlace: "analizador.html",
+    textoEnlace: "Probar el analizador",
+    portada: true
+  },
+  {
     fecha: "2026-10-20",
     tipo: "novedad",
     titulo: "Dos temas nuevos para el overlay: Otoño y Halloween",

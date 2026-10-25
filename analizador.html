@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analizador de campeonatos — KendoSTREAM</title>
+  <meta name="description" content="Carga los archivos de resultados de KendoSTREAM y obtén podios, estadísticas por competidor y rankings. Todo se procesa en tu navegador." />
+  <meta property="og:title" content="Analizador de campeonatos — KendoSTREAM" />
+  <meta property="og:description" content="Podios, estadísticas por competidor y rankings a partir de los archivos de resultados de KendoSTREAM. Sin subir nada." />
+  <meta property="og:image" content="https://kendostream.com/assets/img/hero-kendostream.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="assets/img/logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/analizador.css" />
+</head>
+<body>
+
+  <div id="ks-cabecera"></div>
+
+  <div class="pagina-cabecera">
+    <div class="envoltura">
+      <p class="seccion-eyebrow">Herramienta</p>
+      <h1>Analizador de campeonatos <span class="version-analizador" id="versionAnalizador"></span></h1>
+      <p>Carga los archivos de resultados que genera KendoSTREAM y obtén podios, estadísticas por competidor, rankings y el registro completo para descargar.</p>
+    </div>
+  </div>
+
+  <section class="compacta" style="padding-bottom:0;">
+    <div class="envoltura">
+      <div class="aviso-caja">
+        <strong>Tus datos no salen de tu ordenador.</strong> El análisis se hace íntegramente en tu navegador: no se sube ningún archivo a ningún servidor.
+        Los archivos de resultados (.json) se guardan en la carpeta de resultados que configuras en KendoSTREAM (versión 2.1 o posterior). También lee los registros antiguos.
+      </div>
+    </div>
+  </section>
+
+  <section class="compacta">
+    <div class="ks-analizador">
+      <main class="contenido">
+      <section class="bloque">
+        <h2>Registros</h2>
+        <p class="ayuda">Carga uno o varios registros de resultados (.json) generados por el panel. Los registros del mismo campeonato se fusionan solos, y cargar dos veces el mismo no duplica nada. Todo se procesa en este navegador: no se sube ningún archivo.</p>
+
+        <div class="zona-carga" id="zonaCarga">
+          <p>Arrastra aquí los registros (.json) o</p>
+          <button type="button" id="botonElegir" class="boton-secundario">Elegir archivos</button>
+          <input type="file" id="archivoRegistros" accept=".json,application/json" multiple hidden />
+        </div>
+
+        <ul class="lista-archivos" id="listaArchivos"></ul>
+        <button type="button" id="botonQuitarTodos" class="boton-peligro-discreto" hidden>Quitar todos los registros</button>
+
+        <div class="fila-alias">
+          <span class="etiqueta-alias">Alias de personas y clubes</span>
+          <button type="button" id="botonCargarAlias" class="boton-secundario boton-pequeno">Cargar alias (.json)</button>
+          <button type="button" id="botonDescargarAlias" class="boton-secundario boton-pequeno" disabled>Descargar alias</button>
+          <input type="file" id="archivoAlias" accept=".json,application/json" hidden />
+          <span class="aviso-alias" id="avisoAlias"></span>
+        </div>
+      </section>
+
+      <section class="bloque" id="bloqueResumen" hidden>
+        <h2>Resumen</h2>
+        <div class="cifras" id="cifras"></div>
+        <div id="contenedorCampeonatos"></div>
+      </section>
+
+      <section class="bloque" id="bloquePersonas" hidden>
+        <h2>Personas y clubes</h2>
+
+        <div id="bloqueDudas" hidden>
+          <h3 id="tituloDudas"></h3>
+          <p class="ayuda">En los registros antiguos el mismo nombre se escribe de varias maneras. Lo evidente se une solo (mayúsculas, puntos, espacios, tildes y erratas de una letra); esto es lo que no se puede decidir sin ti. Mientras no lo decidas, cada nombre cuenta como una persona aparte.</p>
+          <div id="contenedorDudas"></div>
+        </div>
+
+        <div id="contenedorDecisiones"></div>
+
+        <h3>Clubes y equipos</h3>
+        <div class="rejilla-clubes" id="contenedorClubes"></div>
+
+        <h3>Personas</h3>
+        <div class="filtros-personas">
+          <input type="search" id="filtroNombre" placeholder="Buscar por nombre" />
+          <select id="filtroClub"><option value="">Todos los clubes</option></select>
+          <select id="filtroEquipo"><option value="">Todos los equipos</option></select>
+          <button type="button" id="botonLimpiarFiltros" class="boton-secundario boton-pequeno">Limpiar filtros</button>
+          <span class="contador-personas" id="contadorPersonas"></span>
+        </div>
+        <div class="contenedor-tabla">
+          <table class="tabla-competiciones tabla-personas" id="tablaPersonas">
+            <thead>
+              <tr>
+                <th><button type="button" class="orden" data-campo="nombre">Nombre</button></th>
+                <th><button type="button" class="orden" data-campo="club">Club</button></th>
+                <th><button type="button" class="orden" data-campo="equipos">Equipos</button></th>
+                <th class="centrado"><button type="button" class="orden" data-campo="combates">Combates</button></th>
+                <th><button type="button" class="orden" data-campo="variantes">Variantes unidas</button></th>
+                <th><button type="button" class="orden" data-campo="estado">Estado</button></th>
+              </tr>
+            </thead>
+            <tbody id="cuerpoPersonas"></tbody>
+          </table>
+        </div>
+        <datalist id="listaClubes"></datalist>
+      </section>
+
+      <section class="bloque" id="bloquePodios" hidden>
+        <h2>Podios y fighting spirit</h2>
+        <p class="ayuda">El podio se calcula desde la final y las semifinales cuando están claras, y se pregunta cuando no. Siempre puedes editarlo a mano. En equipos el podio lleva equipos. El fighting spirit lo eliges tú: puede haber varios o ninguno. El registro nuevo se descarga aparte, sin tocar los originales.</p>
+        <div id="contenedorPodios"></div>
+      </section>
+
+      <section class="bloque" id="bloqueEstadisticas" hidden>
+        <h2>Estadísticas</h2>
+        <div class="nota nota-aviso" id="estadisticasBloqueadas" hidden></div>
+        <div id="estadisticasContenido">
+          <p class="ayuda">Estadísticas individuales sobre los combates cargados. Las victorias incluyen las técnicas (por incomparecencia u otro resultado técnico), que se anotan aparte y no cuentan en el % de victorias, en los puntos ni en las técnicas. Los combates de equipos cuentan como combates 1 contra 1; las medallas son solo de las competiciones individuales.</p>
+          <div class="filtros-estadisticas">
+            <label>Campeonato <select id="estCampeonato"></select></label>
+            <label>Modalidad
+              <select id="estModalidad">
+                <option value="todas">Todas</option>
+                <option value="individual">Solo individual</option>
+                <option value="equipos">Solo equipos</option>
+              </select>
+            </label>
+            <label>Categoría <select id="estCategoria"></select></label>
+            <label>Mínimo de combates <input type="number" id="estMinimo" min="1" value="3" /></label>
+            <label>Puestos por ranking
+              <select id="estLimite">
+                <option value="3">3</option>
+                <option value="5" selected>5</option>
+                <option value="10">10</option>
+              </select>
+            </label>
+          </div>
+          <div id="estadisticasAvisos"></div>
+
+          <h3>Rankings</h3>
+          <div class="rejilla-rankings" id="contenedorRankings"></div>
+
+          <h3>Personas</h3>
+          <div class="filtros-personas">
+            <input type="search" id="estBuscar" placeholder="Buscar por nombre" />
+            <select id="estClub"><option value="">Todos los clubes</option></select>
+            <label class="etiqueta-inline">Técnicas
+              <select id="estTecnicas">
+                <option value="favor">A favor</option>
+                <option value="contra">Recibidas</option>
+              </select>
+            </label>
+            <span class="contador-personas" id="estContador"></span>
+          </div>
+          <div class="contenedor-tabla">
+            <table class="tabla-competiciones tabla-personas tabla-estadisticas" id="tablaEstadisticas">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+
+          <div class="ficha-persona" id="fichaPersona" hidden></div>
+        </div>
+      </section>
+
+      <section class="bloque" id="bloqueAvisos" hidden>
+        <h2>Avisos</h2>
+        <p class="ayuda">Aparecen cuando dos registros no coinciden en algo que no se puede decidir solo. En todos los casos se ha conservado el dato del primer registro cargado.</p>
+        <ul class="lista-avisos" id="listaAvisos"></ul>
+      </section>
+  
+      </main>
+    </div>
+  </section>
+
+  <noscript><div class="envoltura"><p class="vacio">El analizador necesita JavaScript activado en el navegador.</p></div></noscript>
+
+  <div id="ks-pie"></div>
+
+  <script src="datos/novedades.js"></script>
+  <script src="datos/eventos.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/analizador/lector-registros.js"></script>
+  <script src="js/analizador/alias-personas.js"></script>
+  <script src="js/analizador/podios.js"></script>
+  <script src="js/analizador/exportar-registro.js"></script>
+  <script src="js/analizador/estadisticas.js"></script>
+  <script src="js/analizador/analizador.js"></script>
+</body>
+</html>

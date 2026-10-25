@@ -67,6 +67,7 @@
     ["instalacion.html", "Instalación"],
     ["novedades.html", "Novedades"],
     ["noticias.html", "Noticias y eventos"],
+    ["analizador.html", "Analizador"],
     ["resultados.html", "Resultados"],
     ["colaboradores.html", "Colaboradores"],
     ["temas.html", "Temas"]

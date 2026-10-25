@@ -645,3 +645,4 @@ section.compacta { padding: 56px 0; }
 .apartado ul { padding-left: 18px; color: var(--acero); font-size: 0.92rem; }
 .apartado li { margin-bottom: 6px; }
 .apartado-etq { font-family: var(--fuente-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--carmesi); margin: 14px 0 6px 0; }
+.version-analizador { font-family: var(--fuente-mono); font-size: 0.9rem; font-weight: 400; color: var(--acero); margin-left: 8px; }
